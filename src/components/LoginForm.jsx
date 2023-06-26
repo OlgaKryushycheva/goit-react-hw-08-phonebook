@@ -1,4 +1,7 @@
 import { Formik } from 'formik';
+import { useDispatch } from 'react-redux';
+
+import { logIn } from 'redux/auth/thunks';
 import { LoginSchema } from 'validation';
 
 import {
@@ -10,13 +13,15 @@ import {
 } from '../Styles/StyleForm.styled';
 
 export const LoginForm = () => {
+  const disppatch = useDispatch();
+
   const values = {
-    name: '',
     email: '',
+    password: '',
   };
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
+    disppatch(logIn(values));
     actions.resetForm();
   };
 
@@ -28,18 +33,18 @@ export const LoginForm = () => {
     >
       <Form>
         <Label>
-          Name
-          <Field name="name" type="text" />
-          <ErrorMessage name="name" component={'span'} />
-        </Label>
-
-        <Label>
           Email
           <Field name="email" type="email" />
           <ErrorMessage name="email" component={'span'} />
         </Label>
 
-        <Btn type="submit">Login</Btn>
+        <Label>
+          Pasword
+          <Field name="password" type="password" />
+          <ErrorMessage name="password" component={'span'} />
+        </Label>
+
+        <Btn type="submit">Log in</Btn>
       </Form>
     </Formik>
   );

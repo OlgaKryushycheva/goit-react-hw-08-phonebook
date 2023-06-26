@@ -1,8 +1,8 @@
-import { useSelector } from 'react-redux';
-import { selectError } from 'redux/contacts/selectors';
+import { useContacts } from 'hooks/useContacts';
+
 import { Err } from 'Styles/StyleForm.styled';
 
 export const Error = () => {
-  const error = useSelector(selectError);
+  const error = useContacts();
   return <Err>{error}</Err>;
 };

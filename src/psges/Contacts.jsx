@@ -1,22 +1,18 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { ContactForm } from 'components/ContactForm';
 import { ContactList } from 'components/ContactList';
 import { Error } from 'components/Error';
 import { Filter } from 'components/Filter';
 import { Loading } from 'components/Loading';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectContacts,
-  selectError,
-  selectIsLoading,
-} from 'redux/contacts/selectors';
+import { useContacts } from 'hooks/useContacts';
 import { fetchContacts } from 'redux/contacts/thunks';
+
 import { Title, TitleContact } from 'Styles/StyleForm.styled';
 
 const Contacts = () => {
-  const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const { contacts, isLoading, error } = useContacts();
 
   const dipatch = useDispatch();
 

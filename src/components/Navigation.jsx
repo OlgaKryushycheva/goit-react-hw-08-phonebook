@@ -1,25 +1,20 @@
+import { useAuth } from 'hooks/useAuth';
+
 import { Nav, StyledLink } from 'Styles/StyleForm.styled';
 
 export const Navigation = () => {
+  const { isLoggedIn } = useAuth();
+
   return (
-    <>
-      <Nav>
-        <li>
-          <StyledLink to="/">Home</StyledLink>
-        </li>
+    <Nav>
+      <li>
+        <StyledLink to="/">Home</StyledLink>
+      </li>
+      {isLoggedIn && (
         <li>
           <StyledLink to="/contacts">Contacts</StyledLink>
         </li>
-      </Nav>
-
-      <Nav>
-        <li>
-          <StyledLink to="/register">Register</StyledLink>
-        </li>
-        <li>
-          <StyledLink to="/login">Login</StyledLink>
-        </li>
-      </Nav>
-    </>
+      )}
+    </Nav>
   );
 };

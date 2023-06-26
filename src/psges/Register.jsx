@@ -1,4 +1,5 @@
 import { RegisterForm } from 'components/RegisterForm';
+
 import { Title } from 'Styles/StyleForm.styled';
 
 const Register = () => {

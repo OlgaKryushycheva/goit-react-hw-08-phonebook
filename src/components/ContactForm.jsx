@@ -1,6 +1,9 @@
 import { Formik } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/contacts/selectors';
+import { useDispatch } from 'react-redux';
+
+import { addContact } from 'redux/contacts/thunks';
+import { ContactSchema } from 'validation';
+import { useContacts } from 'hooks/useContacts';
 
 import {
   Label,
@@ -9,16 +12,15 @@ import {
   Field,
   Btn,
 } from '../Styles/StyleForm.styled';
-import { addContact } from 'redux/contacts/thunks';
-import { ContactSchema } from 'validation';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
+
+  const { contacts } = useContacts();
 
   const values = {
     name: '',
-    phone: '',
+    number: '',
   };
 
   const handleSubmit = (values, actions) => {
@@ -47,8 +49,8 @@ export const ContactForm = () => {
 
         <Label>
           Number
-          <Field name="phone" type="tel" />
-          <ErrorMessage name="phone" component={'span'} />
+          <Field name="number" type="tel" />
+          <ErrorMessage name="number" component={'span'} />
         </Label>
 
         <Btn type="submit">Add contact</Btn>

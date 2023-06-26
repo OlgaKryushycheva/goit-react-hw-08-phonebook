@@ -1,7 +1,7 @@
-import { Title } from 'Styles/StyleForm.styled';
+import { TitleHome } from 'Styles/StyleForm.styled';
 
 const Home = () => {
-  return <Title>Wellcome to Phonebook!</Title>;
+  return <TitleHome>Welcome to Phonebook!</TitleHome>;
 };
 
 export default Home;

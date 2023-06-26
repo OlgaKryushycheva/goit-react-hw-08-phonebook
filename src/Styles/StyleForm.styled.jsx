@@ -5,8 +5,7 @@ import { Field as FormikField } from 'formik';
 import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
-  /* width: 530px; */
-  width: 830px;
+  width: 630px;
   min-height: 500px;
   padding: 30px;
   margin: 10px auto;
@@ -61,6 +60,10 @@ export const User = styled.div`
   display: flex;
   gap: 10px;
   align-items: center;
+`;
+
+export const TitleHome = styled.h1`
+  text-align: center;
 `;
 
 export const Title = styled.h1`
@@ -137,6 +140,7 @@ export const Btn = styled.button`
   border-radius: 4px;
   border: 1px solid ${props => props.theme.colors.black};
   cursor: pointer;
+  font-size: 16px;
 
   transition-property: color, background-color, border-color, box-shadow;
   transition-delay: 250ms;

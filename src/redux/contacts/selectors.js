@@ -6,6 +6,7 @@ export const selectError = state => state.contacts.error;
 export const selectFilter = state => state.filter.value;
 
 // === мемоизированный селектор. Не вижу разницы с составным ===
+
 export const selectFilteredContacts = createSelector(
   [selectContacts, selectFilter],
 
@@ -23,6 +24,7 @@ export const selectFilteredContacts = createSelector(
 );
 
 // ==== составной селектор. Не вижу разныцы с мемоизированным ===
+
 // export const selectFilteredContacts = state => {
 //   console.log('select');
 

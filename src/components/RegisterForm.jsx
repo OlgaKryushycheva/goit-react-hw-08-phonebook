@@ -1,4 +1,7 @@
 import { Formik } from 'formik';
+import { useDispatch } from 'react-redux';
+
+import { register } from 'redux/auth/thunks';
 import { SignupSchema } from 'validation';
 
 import {
@@ -10,6 +13,8 @@ import {
 } from '../Styles/StyleForm.styled';
 
 export const RegisterForm = () => {
+  const dispatch = useDispatch();
+
   const values = {
     name: '',
     email: '',
@@ -17,7 +22,7 @@ export const RegisterForm = () => {
   };
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
+    dispatch(register(values));
     actions.resetForm();
   };
 
