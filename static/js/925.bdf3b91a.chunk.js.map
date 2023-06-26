@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/925.bdf3b91a.chunk.js","mappings":"2KAMA,UAJa,WACX,OAAO,SAAC,KAAD,mCACR,C","sources":["psges/Home.jsx"],"sourcesContent":["import { TitleHome } from 'Styles/StyleForm.styled';\n\nconst Home = () => {\n  return <TitleHome>Welcome to Phonebook!</TitleHome>;\n};\n\nexport default Home;\n"],"names":[],"sourceRoot":""}
