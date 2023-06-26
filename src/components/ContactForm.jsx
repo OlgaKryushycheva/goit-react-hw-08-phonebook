@@ -1,7 +1,6 @@
 import { Formik } from 'formik';
-import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/contacts/selectors';
 
 import {
   Label,
@@ -10,19 +9,8 @@ import {
   Field,
   Btn,
 } from '../Styles/StyleForm.styled';
-import { addContact } from 'redux/thunks';
-
-const phoneRegExp = /[+3][0-9]{12}$/;
-
-const ContactSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(5, 'Слишком короткое!')
-    .max(20, 'Слишком длинное!')
-    .required('Заполните это поле'),
-  phone: Yup.string()
-    .matches(phoneRegExp, 'Заполните поле в формате +380000000000')
-    .required('Заполните это поле'),
-});
+import { addContact } from 'redux/contacts/thunks';
+import { ContactSchema } from 'validation';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();

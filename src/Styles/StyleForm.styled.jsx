@@ -2,9 +2,12 @@ import styled from '@emotion/styled';
 import { Form as FormikForm } from 'formik';
 import { ErrorMessage as FormikMessage } from 'formik';
 import { Field as FormikField } from 'formik';
+import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
-  width: 530px;
+  /* width: 530px; */
+  width: 830px;
+  min-height: 500px;
   padding: 30px;
   margin: 10px auto;
   background-color: ${props => props.theme.colors.white};
@@ -17,6 +20,47 @@ export const Container = styled.div`
   line-height: 1.17;
   letter-spacing: 0.03em;
   color: ${props => props.theme.colors.black};
+`;
+
+export const Header = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  font-size: 20px;
+  border-bottom: 1px solid ${props => props.theme.colors.black};
+  box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
+`;
+
+export const Nav = styled.ul`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+`;
+
+export const StyledLink = styled(NavLink)`
+  color: ${props => props.theme.colors.black};
+  list-style: none;
+  text-decoration: none;
+  font-size: 20px;
+
+  &.active {
+    color: ${props => props.theme.colors.red};
+  }
+
+  &:hover {
+    color: ${props => props.theme.colors.blue};
+  }
+`;
+
+export const User = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
 `;
 
 export const Title = styled.h1`
