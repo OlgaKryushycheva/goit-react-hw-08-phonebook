@@ -27,8 +27,11 @@ export const refreshUserSuccses = (state, action) => {
 
 export const refreshPending = state => {
   state.isRefreshing = true;
+  state.error = false;
 };
 
 export const refreshRejected = (state, action) => {
   state.isRefreshing = false;
+  state.error = action.payload;
+  console.log(action.payload);
 };

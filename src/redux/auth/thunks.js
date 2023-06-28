@@ -49,9 +49,9 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
-    const { persistedToken } = thunkAPI.getState().auth;
+    const { token } = thunkAPI.getState().auth;
 
-    if (persistedToken === null) {
+    if (token === null) {
       return thunkAPI.rejectWithValue('refreshUser with error');
       // эта ошибка почему-то записывается в CONTACTS.state.error
       // консоль выдает ошибки и ничего не рендерится при первой загрузке страницы,
@@ -63,7 +63,7 @@ export const refreshUser = createAsyncThunk(
     }
 
     try {
-      setAuthHeader(persistedToken);
+      setAuthHeader(token);
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
