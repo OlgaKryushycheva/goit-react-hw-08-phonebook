@@ -49,9 +49,9 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
-    const { token } = thunkAPI.getState().auth;
+    const { persistedToken } = thunkAPI.getState().auth;
 
-    if (token === null) {
+    if (persistedToken === null) {
       return thunkAPI.rejectWithValue('refreshUser with error');
       // эта ошибка почему-то записывается в CONTACTS.state.error
       // консоль выдает ошибки и ничего не рендерится при первой загрузке страницы,
@@ -63,11 +63,15 @@ export const refreshUser = createAsyncThunk(
     }
 
     try {
-      setAuthHeader(token);
+      setAuthHeader(persistedToken);
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
+      // вчера работало нормально, но сегодня (я ничего не меняла)
+      // приложение работает, но при разлогиненом юзере
+      // и обновлении страницы консоль показывает ошибку
+      // и в contacts.state.error у же записывается этот error.message
     }
   }
 );
