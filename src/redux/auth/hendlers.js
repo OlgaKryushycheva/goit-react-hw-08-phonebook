@@ -30,6 +30,5 @@ export const refreshPending = state => {
 };
 
 export const refreshRejected = (state, action) => {
-  state.error = action.payload;
   state.isRefreshing = false;
 };

@@ -21,6 +21,8 @@ export const deleteleSuccses = (state, action) => {
 
 export const handlePending = state => {
   state.isLoading = true;
+  // state.error = null поставлено чтобы нормально работал refreshUser
+  state.error = null;
 };
 
 export const handleRejected = (state, action) => {

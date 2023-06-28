@@ -51,8 +51,15 @@ export const refreshUser = createAsyncThunk(
   async (_, thunkAPI) => {
     const { token } = thunkAPI.getState().auth;
 
-    if (!token) {
+    if (token === null) {
       return thunkAPI.rejectWithValue('refreshUser with error');
+      // эта ошибка почему-то записывается в CONTACTS.state.error
+      // консоль выдает ошибки и ничего не рендерится при первой загрузке страницы,
+      // или если разлогиниться и перезагрузить старницу.
+      // Приложение будет работать только если
+      // поставить contacts.state.error = null при Pending (handlePending)
+      // (при Фулфилд недостаточно!) экшенов из contacts
+      // но такого же не должно быть вообще?
     }
 
     try {
@@ -60,7 +67,7 @@ export const refreshUser = createAsyncThunk(
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

@@ -29,9 +29,7 @@ export function App() {
           <Route index element={<Home />} />
           <Route
             path="/contacts"
-            element={
-              <PrivateRoads component={Contacts} redirectTo="/register" />
-            }
+            element={<PrivateRoads component={Contacts} redirectTo="/login" />}
           />
           <Route
             path="/register"

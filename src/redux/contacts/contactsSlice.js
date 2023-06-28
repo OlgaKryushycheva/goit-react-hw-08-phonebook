@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-
 import {
   fetchSuccses,
   addSuccses,
@@ -24,28 +23,3 @@ const contactsSlice = createSlice({
 });
 
 export const contactsReduser = contactsSlice.reducer;
-
-// =================================================
-
-// СТАРЫЙ синтаксис
-
-// extraReducers: {
-//   [fetchContacts.pending](state) {
-//     state.isLoading = true;
-//   },
-//   [fetchContacts.fulfilled](state, action) {
-//     state.isLoading = false;
-//     state.error = null;
-//     state.items = action.payload;
-//   },
-//   [fetchContacts.rejected](state, action) {
-//     state.isLoading = false;
-//     state.error = action.payload;
-//     console.log(action.payload);
-//   },
-//   [addContact.fulfilled]; (state, action) => {
-//     state.isLoading = false;
-//     state.error = null;
-//     state.items.push(action.payload);
-//   },
-// },
