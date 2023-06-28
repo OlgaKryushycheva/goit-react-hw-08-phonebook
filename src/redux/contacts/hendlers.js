@@ -2,6 +2,7 @@ export const fetchSuccses = (state, action) => {
   state.isLoading = false;
   state.items = action.payload;
   state.error = null;
+  console.log('fetchSuccses->', action.payload);
 };
 
 export const addSuccses = (state, action) => {
@@ -19,13 +20,15 @@ export const deleteleSuccses = (state, action) => {
   state.items.splice(index, 1);
 };
 
-export const handlePending = state => {
+export const handlePending = (state, action) => {
   state.isLoading = true;
   // state.error = null поставлено чтобы нормально работал refreshUser
   state.error = null;
+  console.log('handlePending->', action.payload);
 };
 
 export const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
+  console.log('handleRejected->', action.payload);
 };
